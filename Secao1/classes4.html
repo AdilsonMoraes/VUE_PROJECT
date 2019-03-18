@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" corcontent="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <input
+        type="text"
+        v-model="textDigitado"
+        v-on:keyup.enter="alterarNome()"
+      />
+
+      <ul>
+        <li
+          v-for="item in array"
+          style="background: white"
+          @click="alerta($event)"
+        >
+          {{ item }}
+        </li>
+      </ul>
+
+      red
+      <input
+        @click="corP($event.target.value)"
+        type="radio"
+        name="cor"
+        value="red"
+        checked
+      />
+      green
+      <input
+        @click="corP($event.target.value)"
+        type="radio"
+        name="cor"
+        value="green"
+      />
+
+      <button @click="vermelho()">vermelho</button>
+      <button @click="verde()">verde</button>
+      <button @click="borda()">borda</button>
+
+      <p ref="firstParagraph">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam sint
+        esse nostrum libero recusandae a ex minima et error, natus deserunt,
+        quam assumenda id aliquid sed aspernatur nihil exercitationem odio.
+      </p>
+
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        classParagrafo: "red",
+        textDigitado: "",
+        array: []
+      },
+      methods: {
+        alterarNome() {
+          this.array.push(this.textDigitado);
+          this.textDigitado = "";
+        },
+        alerta(event) {
+          element = event.target;
+          if (element.style.background == "white") {
+            event.target.style = "background: red";
+          } else {
+            event.target.style = "background: white";
+          }
+        },
+        corP(cor) {
+          this.classParagrafo = cor;
+        },
+        vermelho(){
+            this.$refs.firstParagraph.style.background = "red";
+        },
+        verde(){
+            this.$refs.firstParagraph.style.background = "green";
+        },
+        borda(){
+            this.$refs.firstParagraph.style.border = "2px solid black";
+        },
+        incolor(){
+            this.$refs.firstParagraph.style = "";
+        }
+      }
+    });
+  </script>
+</html>

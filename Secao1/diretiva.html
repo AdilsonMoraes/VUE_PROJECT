@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+ 
+  <body>
+        <div id="app">
+           <img 
+                :src="srcImg" 
+                :title="titleImg">
+                <hr>
+                <a v-bind:href="url">
+                    Vue
+                </a>                
+                <hr>
+                <p v-text="textPar"></p>
+                <hr>
+                <div v-html="textPar"></div>
+        </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>    
+  <script>
+    new Vue({
+      el: "#app",
+      data:{
+        srcImg:'vuelogo.png',
+        titleImg:'Logo VUE',
+        url:'https://vuejs.org',
+        textPar:'teste <br> qualquer'
+
+      }
+    });    
+  </script>
+</html>

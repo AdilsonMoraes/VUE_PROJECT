@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" corcontent="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <input
+        type="text"
+        v-model="textDigitado"
+        v-on:keyup.enter="alterarNome()"
+      />
+
+      <ul>
+        <li
+          v-for="item in array"
+          style="background: white"
+          @click="alerta($event)"
+        >
+          {{ item }}
+        </li>
+      </ul>
+
+      red
+      <input
+        @click="corP($event.target.value)"
+        type="radio"
+        name="cor"
+        value="red"
+        checked
+      />
+      green
+      <input
+        @click="corP($event.target.value)"
+        type="radio"
+        name="cor"
+        value="green"
+      />
+      blue
+      <input
+        @click="corP($event.target.value)"
+        type="radio"
+        name="cor"
+        value="blue"
+      />
+      yellow
+      <input
+        @click="corP($event.target.value)"
+        type="radio"
+        name="cor"
+        value="yellow"
+      />
+
+      <button @click="vermelho()">vermelho</button>
+      <button @click="verde()">verde</button>
+      <button @click="azul()">azul</button>
+      <button @click="amarelo()">amarelo</button>
+
+      <p :class="{red: colors.vermelho , green: colors.verde, blue: colors.azul, yellow: colors.amarelo}">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam sint
+        esse nostrum libero recusandae a ex minima et error, natus deserunt,
+        quam assumenda id aliquid sed aspernatur nihil exercitationem odio.
+      </p>
+
+      <p :class="classParagrafo">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+        magnam, iure soluta illo delectus quod corrupti mollitia error molestiae
+        perspiciatis repellendus, vitae repellat sapiente a, facilis rerum vero
+        minus eligendi!
+      </p>
+    </div>
+  </body>
+
+  <style>
+    .red {
+      background-color: red;
+    }
+    .green {
+      background-color: green;
+    }
+    .blue {
+      background-color: blue;
+    }
+    .yellow {
+      background-color: yellow;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        colors: {
+          vermelho: true,
+          verde: false,
+          azul: false,
+          amarelo: false
+        },
+        classParagrafo: "red",
+        textDigitado: "",
+        array: []
+      },
+      methods: {
+        alterarNome() {
+          this.array.push(this.textDigitado);
+          this.textDigitado = "";
+        },
+        alerta(event) {
+          //alert(event.target.textContent.trim());
+          element = event.target;
+          if (element.style.background == "white") {
+            event.target.style = "background: red";
+          } else {
+            event.target.style = "background: white";
+          }
+        },
+        corP(cor) {
+          this.classParagrafo = cor;
+        },
+        vermelho() {
+          this.colors.vermelho = true;
+          this.colors.verde = false;
+          this.colors.azul = false;
+          this.colors.amarelo = false;
+        },
+        verde() {
+          this.colors.verde = true;
+          this.colors.vermelho = false;
+          this.colors.azul = false;
+          this.colors.amarelo = false;
+        },
+        azul() {
+          this.colors.azul = true;
+          this.colors.verde = false;
+          this.colors.vermelho = false;
+          this.colors.amarelo = false;
+        },
+        amarelo() {
+          this.colors.amarelo = true;
+          this.colors.verde = false;
+          this.colors.vermelho = false;
+          this.colors.azul = false;
+        }
+      }
+    });
+  </script>
+</html>

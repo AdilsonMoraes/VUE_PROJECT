@@ -1,0 +1,23 @@
+1 - Instale o nodejs na sua maquina.
+2 - Abra o terminal 
+3 - rode o comando "npm install -g @vue/cli
+
+
+Usando vue CLI
+
+        via terminal, vá no diretorio, onde vc quer criar o projeto e digite:
+                vue create "nome_do_projeto"        
+
+        Selecione a opção default "Manually"
+        
+        Acessar a pasta pelo terminal e dar um "npm run serve"
+
+
+Usando vue UI
+        via terminal, vá no diretorio, onde vc quer criar o projeto e digite:
+                vue UI
+                 
+
+json-server --watch banco.json
+npm run serve
+
